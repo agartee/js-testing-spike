@@ -1,8 +1,7 @@
 const chai = require('chai')
   , spies = require('chai-spies');
 
-const should = chai.should() 
-  , expect = chai.expect;
+const should = chai.should();
 
 const Service = require('../service');
 const serviceDependency = require('../service-dependency')

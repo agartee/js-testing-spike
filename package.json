@@ -1,0 +1,17 @@
+{
+  "name": "mocha-spike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:mocha": "mocha ./test-mocha",
+    "test:jest": "jest --watchAll=false --testPathIgnorePatterns ./test-mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai-spies": "^1.0.0",
+    "jest": "^29.4.2",
+    "mocha": "^10.2.0"
+  }
+}

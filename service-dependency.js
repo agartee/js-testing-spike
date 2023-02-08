@@ -1,5 +1,7 @@
+const { default: axios } = require("axios");
+
 const serviceDependency = {
-  getBonus: () => 0
+  getBonus: async () => axios.get("http://www.test.com")
 }
 
 module.exports = serviceDependency;

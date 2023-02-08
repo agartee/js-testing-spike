@@ -10,9 +10,9 @@ describe('service: jest', () => {
   
   describe('sum', () => {
 
-    it('returns 3 when provided 1 and 2', () => {
+    it('returns 3 when provided 1 and 2', async () => {
       const service = new Service();
-      const result = service.sum(1, 2);
+      const result = await service.sum(1, 2);
       result.should.equal(3);
     });
     
@@ -23,13 +23,13 @@ describe('service: jest', () => {
         chai.spy.restore(serviceDependency);
       });
 
-      it('returns 10 when provided 1 and 2 and a spy-bonus of 7 (normally 0)', () => {
+      it('returns 10 when provided 1 and 2 and a spy-bonus of 7 (normally 0)', async () => {
         const mySpy = chai.spy.on(serviceDependency, 'getBonus', function() {
           return 7; // normally 0
         });
       
         const service = new Service();
-        const result = service.sum(1, 2);
+        const result = await service.sum(1, 2);
         result.should.equal(10); // with mocked serviceDependency bonus
 
         mySpy.should.have.been.called(1);
@@ -42,13 +42,13 @@ describe('service: jest', () => {
         jest.restoreAllMocks();
       });
 
-      it('returns 45 when provided 1 and 2 and a spy-bonus of 42 (normally 0)', () => {
+      it('returns 45 when provided 1 and 2 and a spy-bonus of 42 (normally 0)', async () => {
         chai.use(spies);
         jest.spyOn(serviceDependency, 'getBonus')
           .mockReturnValue(42); // normally 0
-      
+        
         const service = new Service();
-        const result = service.sum(1, 2);
+        const result = await service.sum(1, 2);
         
         expect(result).toBe(45); // with mocked serviceDependency bonus
         expect(serviceDependency.getBonus).toHaveBeenCalledTimes(1);

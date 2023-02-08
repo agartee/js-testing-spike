@@ -11,8 +11,8 @@ describe('service-dependency: jest', () => {
 
   describe('getBonus', () => {
 
-    it('returns zero', () => {
-      const result = serviceDependency.getBonus();
+    it('returns zero', async () => {
+      const result = await serviceDependency.getBonus();
     
       // different assertion formats:
       result.should.equal(0);
@@ -25,13 +25,13 @@ describe('service-dependency: jest', () => {
         chai.spy.restore(serviceDependency);
       });
 
-      it('can be spied on', () => {
+      it('can be spied on', async () => {
         chai.use(spies);
         chai.spy.on(serviceDependency, 'getBonus', function() {
           return 2;
         });
       
-        let result = serviceDependency.getBonus();
+        let result = await serviceDependency.getBonus();
         result.should.equal(2);
       });
     });
@@ -42,11 +42,11 @@ describe('service-dependency: jest', () => {
         jest.restoreAllMocks();
       });
 
-      it('can be spied on', () => {
+      it('can be spied on', async () => {
         jest.spyOn(serviceDependency, 'getBonus')
           .mockReturnValue(2);
         
-        let result = serviceDependency.getBonus();
+        let result = await serviceDependency.getBonus();
         
         // using Chai assertion due to import conflict for demo for 'expect'
         // ... will not normally use two assertion libraries in real project

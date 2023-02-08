@@ -1,8 +1,9 @@
 const dependencyService = require('./service-dependency')
 
 class Service {
-  sum(a, b) {
-    return a + b + dependencyService.getBonus();
+  async sum(a, b) {
+    const bonus = await dependencyService.getBonus();
+    return a + b + bonus;
   }
 }
 

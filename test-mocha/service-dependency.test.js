@@ -13,8 +13,8 @@ describe('service-dependency: mocha', () => {
 
   describe('getBonus', () => {
 
-    it('returns zero', () => {
-      const result = serviceDependency.getBonus();
+    it('returns zero', async () => {
+      const result = await serviceDependency.getBonus();
     
       // different assertion formats:
       result.should.equal(0);
@@ -28,8 +28,8 @@ describe('service-dependency: mocha', () => {
         });
       });
 
-      it('demo spying', () => {
-        let result = serviceDependency.getBonus();
+      it('demo spying', async () => {
+        let result = await serviceDependency.getBonus();
         result.should.equal(2);
       });
 

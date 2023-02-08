@@ -49,7 +49,7 @@ describe('service-dependency: jest', () => {
         let result = serviceDependency.getBonus();
         
         // using Chai assertion due to import conflict for demo for 'expect'
-        // ... will not normally use two assertion libraries in real project.
+        // ... will not normally use two assertion libraries in real project
         expect(result).to.equal(2);
       });
     });

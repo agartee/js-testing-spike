@@ -15,12 +15,9 @@ describe('service: mocha', () => {
       result.should.equal(3);
     });
     
-    // structure differs for Mocha to prevent error:
-    // Error: "getBonus" is already a spy
     describe('with spy', () => {
       chai.use(spies);
 
-      // hoops!
       beforeEach(function() {
         chai.spy.on(serviceDependency, 'getBonus', function() {
           return 7; // normally 0
@@ -33,7 +30,6 @@ describe('service: mocha', () => {
         result.should.equal(10); // with mocked serviceDependency bonus!
       });
 
-      // more hoops!
       afterEach(function() {
         chai.spy.restore(serviceDependency);
       });

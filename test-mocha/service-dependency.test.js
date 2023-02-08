@@ -21,10 +21,7 @@ describe('service-dependency: mocha', () => {
       expect(result).to.equal(0);
     });
 
-    // structure differs for Mocha to prevent error:
-    // Error: "getBonus" is already a spy 
-    describe('with spy', () => {
-      // hoops!
+    describe('with Chai spy', () => {
       beforeEach(function() {
         chai.spy.on(serviceDependency, 'getBonus', function() {
           return 2; // normally 0
@@ -36,7 +33,6 @@ describe('service-dependency: mocha', () => {
         result.should.equal(2);
       });
 
-      // more hoops!
       afterEach(function() {
         chai.spy.restore(serviceDependency);
       });
